@@ -26,6 +26,7 @@ module.exports = createReactClass({
     validateQuery: PropTypes.func,
     isExpanded: PropTypes.func,
     isBold: PropTypes.func,
+    isHighlight: PropTypes.func,
     filterOptions: PropTypes.shape({
       cacheResults: PropTypes.bool,
       ignoreCase: PropTypes.bool,
@@ -61,6 +62,9 @@ module.exports = createReactClass({
         return false;
       },
       isBold: function (keypath, value) {
+        return false;
+      },
+      isHighlight: function (keypath, value) {
         return false;
       },
       verboseShowOriginal: false,
@@ -99,6 +103,7 @@ module.exports = createReactClass({
             root: true,
             isExpanded: p.isExpanded,
             isBold: p.isBold,
+            isHighlight: p.isHighlight,
             interactiveLabel: p.interactiveLabel,
             verboseShowOriginal: p.verboseShowOriginal,
           })
@@ -145,7 +150,8 @@ module.exports = createReactClass({
       p.data !== this.props.data ||
       p.onClick !== this.props.onClick ||
       p.isExpanded !== this.props.isExpanded ||
-      p.isBold !== this.props.isBold
+      p.isBold !== this.props.isBold ||
+      p.isHighlight !== this.props.isHighlight
     );
   },
   createFilterer: function (data, options) {
