@@ -90,6 +90,7 @@ module.exports = createReactClass({
             isEmpty(data)
         );
 
+        console.log('p.onMouseEnter: ', p.onMouseEnter);
         return h('div', { className: 'json-inspector ' + p.className },
             this.renderToolbar(),
             (
