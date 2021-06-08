@@ -24,6 +24,8 @@ module.exports = createReactClass({
             debounceTime: PropTypes.number
         }),
         onClick: PropTypes.func,
+        onMouseEnter: PropTypes.func,
+        onMouseLeave: PropTypes.func,
         validateQuery: PropTypes.func,
         isExpanded: PropTypes.func,
         filterOptions: PropTypes.shape({
@@ -96,6 +98,8 @@ module.exports = createReactClass({
                     h(Leaf, {
                         data: data,
                         onClick: p.onClick,
+                        onMouseEnter: p.onMouseEnter,
+                        onMouseLeave: p.onMouseLeave,
                         id: p.id,
                         getOriginal: this.getOriginal,
                         query: (
@@ -155,7 +159,8 @@ module.exports = createReactClass({
             p.query !== this.props.query ||
             s.query !== this.state.query ||
             p.data !== this.props.data ||
-            p.onClick !== this.props.onClick
+            p.onClick !== this.props.onClick || 
+            p.isExpanded !== this.props.isExpanded
         );
     },
     createFilterer: function(data, options) {
