@@ -25,6 +25,7 @@ module.exports = createReactClass({
     onMouseLeave: PropTypes.func,
     validateQuery: PropTypes.func,
     isExpanded: PropTypes.func,
+    isBold: PropTypes.func,
     filterOptions: PropTypes.shape({
       cacheResults: PropTypes.bool,
       ignoreCase: PropTypes.bool,
@@ -57,6 +58,9 @@ module.exports = createReactClass({
        * @return {Boolean}
        */
       isExpanded: function (keypath, value) {
+        return false;
+      },
+      isBold: function (keypath, value) {
         return false;
       },
       verboseShowOriginal: false,
@@ -94,6 +98,7 @@ module.exports = createReactClass({
             label: 'root',
             root: true,
             isExpanded: p.isExpanded,
+            isBold: p.isBold,
             interactiveLabel: p.interactiveLabel,
             verboseShowOriginal: p.verboseShowOriginal,
           })
@@ -139,7 +144,8 @@ module.exports = createReactClass({
       s.query !== this.state.query ||
       p.data !== this.props.data ||
       p.onClick !== this.props.onClick ||
-      p.isExpanded !== this.props.isExpanded
+      p.isExpanded !== this.props.isExpanded ||
+      p.isBold !== this.props.isBold
     );
   },
   createFilterer: function (data, options) {
